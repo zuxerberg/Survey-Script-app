@@ -25,3 +25,13 @@ Changes save to a per-account device cache immediately, then upload automaticall
 Original browser-only records are kept under their existing key. **Upload browser cards** explicitly merges them into the signed-in account; the original copy is retained. Backups can also be imported. Local-file records must be exported from that file and imported on the hosted site.
 
 Signing out clears the displayed cards but retains the account-scoped device cache. Export backups regularly.
+
+## Call script and question editor
+
+Use the arrow centered on the left edge to open or close the call script. Script text saves with the signed-in account.
+
+Use **Edit questions** on the interview card to add, remove, or rewrite questions. **Reset to default** restores the original eight questions in the editor; select **Save questions** to apply. By default, changes apply to all cards and the template for new cards. Uncheck **Apply to all existing cards too** to update only the current card and future cards.
+
+Each card stores its own question IDs and text. Removed or rewritten questions with answers are retained under **Previous answers**. Restoring default questions can recover previously archived answers by question ID. Question counts in the All cards tab adapt to each card.
+
+Preferences are stored in the private `owner_survey_preferences` table. The additive schema is documented in `supabase/preferences-schema.sql` and was already applied to the linked project.
