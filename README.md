@@ -35,3 +35,7 @@ Use **Edit questions** on the interview card to add, remove, or rewrite question
 Each card stores its own question IDs and text. Removed or rewritten questions with answers are retained under **Previous answers**. Restoring default questions can recover previously archived answers by question ID. Question counts in the All cards tab adapt to each card.
 
 Preferences are stored in the private `owner_survey_preferences` table. The additive schema is documented in `supabase/preferences-schema.sql` and was already applied to the linked project.
+
+## Business demographics
+
+Each interview card includes Industry (HVAC, Plumbing, Roofing, or Other with a custom text field), Business size (Small: 1-10 staff; Medium: 11-50; Large: 51+), and Position for the respondent's role. Size ranges are survey categories, not formal industry classifications. These fields are included in cloud records and JSON backups. Older cards default to blank values. The All cards view displays the demographics and includes them in search.
