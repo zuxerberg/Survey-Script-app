@@ -26,3 +26,39 @@ label{font-size:11px;color:#647087}.info input,.info select{font-size:13px}.ques
 
 /* Keep functional small text legible on light surfaces. */
 input::placeholder,textarea::placeholder,.question textarea::placeholder,.notes textarea::placeholder{color:#778297}.section-heading p,.top p{color:#727c90}.no-btn,.yes-btn{color:#737c91}.no-btn{color:#8b7583}.workspace-stats>div>div>span{color:#747f94}.badge{color:#7c8598}.num{color:#8d83a8}.script-drawer p{color:#796e8b}.script-state{color:#80748e}.mini p,.mini-progress span{color:#717e94}.auth-body p,.auth-body label{color:#717d93}.auth-security{color:#7e889b}
+
+/* Ambient sign-in panel: soft independent color sources inspired by
+   Framer's Ambient Background by Tim Yeng. Original CSS implementation. */
+.auth-story{background:#07162d;isolation:isolate;justify-content:center;padding:56px;min-height:100vh}
+.auth-story:after{display:none}
+.ambient-background{position:absolute;inset:0;overflow:hidden;z-index:0;background:#081932;pointer-events:none}
+.ambient-orb{position:absolute;border-radius:50%;filter:blur(75px);will-change:transform}
+.ambient-orb-one{width:105%;height:78%;left:-36%;top:-17%;background:#142f58;opacity:.95;animation:ambient-drift-one 22s ease-in-out infinite alternate}
+.ambient-orb-two{width:91%;height:87%;right:-38%;top:17%;background:#72b6ee;opacity:.68;animation:ambient-drift-two 27s ease-in-out infinite alternate}
+.ambient-orb-three{width:110%;height:78%;left:-28%;bottom:-38%;background:#0a2143;opacity:.98;animation:ambient-drift-three 24s ease-in-out infinite alternate}
+.ambient-glass{position:absolute;inset:0;background:linear-gradient(120deg,#06162e26,#081a3512 50%,#04142d30);backdrop-filter:blur(18px)}
+.auth-story-content{position:relative;z-index:1;margin:auto 0;padding:35px 0;max-width:480px}
+.auth-story h2{font-size:43px;font-weight:650;letter-spacing:-1.7px;line-height:1.27;color:#fff;margin:0 0 24px;max-width:450px}
+.auth-story p{font-size:15px;line-height:1.9;color:#e0edfa;max-width:430px}
+@keyframes ambient-drift-one{0%{transform:translate(-5%,-4%) scale(.95)}100%{transform:translate(22%,18%) scale(1.15)}}
+@keyframes ambient-drift-two{0%{transform:translate(8%,-10%) scale(.9)}100%{transform:translate(-20%,17%) scale(1.15)}}
+@keyframes ambient-drift-three{0%{transform:translate(3%,0) scale(1)}100%{transform:translate(18%,-15%) scale(1.1)}}
+/* Flat, stationary button surfaces; focus rings remain available. */
+button,button:hover,button:focus,button:active,.primary,.primary:hover,.actions button[aria-pressed=true]{box-shadow:none!important;transition:none!important}
+button:hover,button:active:not(:disabled){transform:none!important}
+.mini,.mini:hover{transition:none;transform:none;box-shadow:none}
+/* Clip the sliding panel to the workspace edge so it never paints over the nav. */
+.script-viewport{position:fixed;left:var(--rail);top:0;bottom:0;width:var(--script-width);overflow:hidden;pointer-events:none;z-index:50}
+.script-drawer{position:absolute;inset:0;width:100%;transform:translateX(-100%);visibility:visible;pointer-events:none;transition:transform .24s cubic-bezier(.22,.7,.25,1);will-change:transform}
+.script-open .script-drawer{transform:translateX(0);visibility:visible;pointer-events:auto}
+.script-toggle{transition:none}
+@media(max-width:1100px){.auth-story{padding:42px}.auth-story h2{font-size:36px}.auth-story p{font-size:14px}}
+@media(max-width:760px){.auth-story{min-height:340px;padding:38px 28px}.auth-story-content{padding:16px 0;max-width:480px}.auth-story h2{font-size:32px;letter-spacing:-1px;margin-bottom:18px}.auth-story p{font-size:13px;line-height:1.8;max-width:none}.ambient-orb{filter:blur(45px)}.script-viewport{left:0;width:min(326px,calc(100vw - 38px));z-index:60}.script-drawer{left:0;width:100%}.script-toggle{z-index:65}}
+@media(prefers-reduced-motion:reduce){.ambient-orb{animation:none!important}.script-drawer{transition:none!important}}
+
+/* The handle follows the drawer; this is not a hover animation. */
+.script-toggle,.script-toggle:hover,.script-toggle:focus,.script-toggle:active{transition:left .24s cubic-bezier(.22,.7,.25,1)!important}
+@media(prefers-reduced-motion:reduce){.script-toggle,.script-toggle:hover,.script-toggle:focus,.script-toggle:active{transition:none!important}}
+
+/* Keep the vertically centered drawer handle anchored when hovered/pressed. */
+.script-toggle,.script-toggle:hover,.script-toggle:focus,.script-toggle:active{transform:translateY(-50%)!important}
