@@ -56,9 +56,17 @@ button:hover,button:active:not(:disabled){transform:none!important}
 @media(max-width:760px){.auth-story{min-height:340px;padding:38px 28px}.auth-story-content{padding:16px 0;max-width:480px}.auth-story h2{font-size:32px;letter-spacing:-1px;margin-bottom:18px}.auth-story p{font-size:13px;line-height:1.8;max-width:none}.ambient-orb{filter:blur(45px)}.script-viewport{left:0;width:min(326px,calc(100vw - 38px));z-index:60}.script-drawer{left:0;width:100%}.script-toggle{z-index:65}}
 @media(prefers-reduced-motion:reduce){.ambient-orb{animation:none!important}.script-drawer{transition:none!important}}
 
-/* The handle follows the drawer; this is not a hover animation. */
-.script-toggle,.script-toggle:hover,.script-toggle:focus,.script-toggle:active{transition:left .24s cubic-bezier(.22,.7,.25,1)!important}
-@media(prefers-reduced-motion:reduce){.script-toggle,.script-toggle:hover,.script-toggle:focus,.script-toggle:active{transition:none!important}}
 
-/* Keep the vertically centered drawer handle anchored when hovered/pressed. */
-.script-toggle,.script-toggle:hover,.script-toggle:focus,.script-toggle:active{transform:translateY(-50%)!important}
+/* Center by layout, not transform: shared pressed-button styles cannot move it. */
+.script-toggle,.script-toggle:hover,.script-toggle:focus,.script-toggle:active{
+ top:calc(50% - 36px);height:72px;transform:none!important;
+ transition:none!important;animation:none!important;touch-action:manipulation
+}
+.script-drawer{transition:none!important;will-change:auto}
+.script-viewport{contain:paint}
+main{transition:none}
+.workspace-switch{margin-top:0}
+@media(max-width:760px){
+ .app-rail{min-height:0;padding:12px 16px 0}
+ .app-rail nav{margin-top:0}
+}
