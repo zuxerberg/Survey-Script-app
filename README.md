@@ -39,3 +39,16 @@ Preferences are stored in the private `owner_survey_preferences` table. The addi
 ## Business demographics
 
 Each interview card includes Industry (HVAC, Plumbing, Roofing, or Other with a custom text field), Business size (Small: 1-10 staff; Medium: 11-50; Large: 51+), and Position for the respondent's role. Size ranges are survey categories, not formal industry classifications. These fields are included in cloud records and JSON backups. Older cards default to blank values. The All cards view displays the demographics and includes them in search.
+
+## Workspace UI
+
+The responsive UI uses a dark navigation rail, a research summary, grouped business-profile fields, a live answer-progress indicator, explicit call outcomes, a conversation library, and a collapsible script sheet. Login and the question editor share the same focus states, button variants, spacing, and type system. Desktop layouts become compact navigation and single-column question rows on phones. Reduced-motion preferences are respected.
+
+The app remains buildless. `dist/ui.css` owns the design tokens and responsive styles. Manrope and DM Sans load from Google Fonts with system-font fallbacks. Outline SVG icons are embedded locally.
+
+Design references consulted:
+- [shadcn Button](https://ui.shadcn.com/docs/components/button) and the public button registry source, adapted to native HTML controls.
+- [Framer Switching Tabs Card](https://www.framer.com/marketplace/components/switching-tabs-card/) for consistent composition and restrained transitions; no proprietary Framer source was copied.
+- Mobbin access was unavailable in this session. The official shadcn MCP server was run for tool discovery and its component-audit checklist, but registry fetches failed through the network proxy; public registry source was used as the fallback.
+
+Validation covered desktop and phone layouts plus industry fields, question editing, call outcomes, script persistence, search, cloud-save retry, legacy card normalization, and sign-out isolation. Browser fixtures use sample data and do not create real survey records.
